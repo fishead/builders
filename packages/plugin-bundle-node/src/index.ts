@@ -11,10 +11,12 @@ import rollupCommonJs from '@rollup/plugin-commonjs';
 import rollupJson from '@rollup/plugin-json';
 import rollupNodeResolve from '@rollup/plugin-node-resolve';
 import {rollup} from 'rollup';
+import { add } from './math'
 
 const DEFAULT_MIN_NODE_VERSION = '8';
 
 export async function beforeJob({out}: BuilderOptions) {
+  add(1, 2);
   const srcDirectory = path.join(out, 'dist-src/');
   if (!fs.existsSync(srcDirectory)) {
     throw new MessageError('"dist-src/" does not exist, or was not yet created in the pipeline.');
